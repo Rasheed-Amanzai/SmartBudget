@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Smart_budget.Models;
+using SmartBudget.Models;
 
     public class AuthController : Controller
 {

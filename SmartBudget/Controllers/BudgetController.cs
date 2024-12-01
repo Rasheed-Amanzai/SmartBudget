@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Smart_budget.Models;
+using SmartBudget.Models;
 
-namespace Smart_budget.Controllers
+namespace SmartBudget.Controllers
 {
     public class BudgetController : Controller
     {
