@@ -1,4 +1,4 @@
-namespace SmartBudget.Models
+namespace Smart_budget.Models
 {
     public class ErrorViewModel
     {

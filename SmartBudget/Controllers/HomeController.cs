@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SmartBudget.Models;
+using Smart_budget.Models;
 
-namespace SmartBudget.Controllers
+namespace Smart_budget.Controllers
 {
     public class HomeController : Controller
     {
