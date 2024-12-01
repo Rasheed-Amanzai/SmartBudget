@@ -5,16 +5,16 @@ namespace SmartBudget.Controllers
 {
     public class BudgetController : Controller
     {
-        public IActionResult Create()
+        public ActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Create(string username, decimal income, decimal expenses)
-        {
-            Budget.CreateBudget(username, income, expenses);
-            return RedirectToAction("Index", "Dashboard", new { username });
-        }
+        //[HttpPost]
+        //public IActionResult Create(string username, decimal income, decimal expenses)
+        //{
+        //    Budget.CreateBudget(username, income, expenses);
+        //    return RedirectToAction("Index", "Dashboard", new { username });
+        //}
     }
 }

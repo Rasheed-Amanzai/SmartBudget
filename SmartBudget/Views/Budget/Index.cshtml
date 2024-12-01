@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿﻿@{
+    ViewData["Title"] = "Budget Management Page";
 }
+
+<style>
+    .btn a {
+        color: white;
+        text-decoration: none
+    }
+
+    body {
+        background-color: #F1F1F1;
+    }
+
+    .parent {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .child {
+        height: auto;
+        width: 150px;
+        margin: 10px auto;
+    }
+</style>
+
+<div class="parent btn-group-lg text-center">
+
+    <h1 class="display-4">Budget Management</h1>
+
+    <h3>User Logged In: </h3>
+
+    <div class="child btn btn-success">
+        @Html.ActionLink("Create a Budget", "CreateView")
+    </div>
+
+    <div class="child btn btn-success">
+        @Html.ActionLink("View Budgets", "ListView")
+    </div>
+
+    <div class="child btn btn-success">
+        @Html.ActionLink("Create a Financial Goal", "ListView")
+    </div>
+
+    <div class="child btn btn-success">
+        @Html.ActionLink("Track Budgets", "TrackView")
+    </div>
+</div>

@@ -1,12 +1,39 @@
-﻿<h1>Welcome, @ViewBag.Username</h1>
-@if (ViewBag.Budget != null)
-{
-    <p>Income: @ViewBag.Budget.Income</p>
-    <p>Expenses: @ViewBag.Budget.Expenses</p>
-    <p>Savings: @ViewBag.Budget.Savings</p>
+﻿﻿@{
+    ViewData["Title"] = "Home Page";
 }
-else
-{
-    <p>No budget created yet.</p>
-    <a asp-action="Create" asp-controller="Budget">Create Budget</a>
-}
+
+<style>
+    .btn a {
+        color: white;
+        text-decoration: none
+    }
+
+    body {
+        background-color: #F1F1F1;
+    }
+
+    .parent {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .child {
+        height: auto;
+        width: 150px;
+        margin: 10px auto;
+    }
+</style>
+
+<div class="parent btn-group-lg text-center">
+
+    <h1 class="display-4">SmartBudget</h1>
+
+    <div class="child btn btn-success">
+        @Html.ActionLink("Login", "LoginView")
+    </div>
+
+    <div class="child btn btn-success">
+        @Html.ActionLink("Budget Management (Temp)", "BudgetView")
+    </div>
+</div>
