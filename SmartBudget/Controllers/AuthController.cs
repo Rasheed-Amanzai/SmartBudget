@@ -11,7 +11,7 @@ using SmartBudget.Models;
     [HttpPost]
     public IActionResult Login(string username, string password)
     {
-        if (User.ValidateLogin(username, password))
+       // if (User.ValidateLogin(username, password))
         {
             return RedirectToAction("Index", "Dashboard", new { username });
         }
@@ -28,7 +28,7 @@ using SmartBudget.Models;
     [HttpPost]
     public IActionResult Register(string username, string password)
     {
-        User.RegisterUser(username, password);
+      //  User.RegisterUser(username, password);
         return RedirectToAction("Login");
     }
 }
