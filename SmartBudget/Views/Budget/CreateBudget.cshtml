@@ -1,4 +1,4 @@
-﻿@model SmartBudget.Models.Budget
+﻿@model SmartBudget.Models.CreateBudgetViewModel
 
 @{
     ViewData["Title"] = "Create New Budget";
@@ -9,7 +9,7 @@
 <<form asp-action="CreateBudget" method="post">
     <!-- Budget Name -->
     <div class="form-group">
-        <label asp-for="Name" class="form-label"></label>
+        <label asp-for="Name" class="form-label">Budget Name</label>
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
@@ -18,37 +18,37 @@
     <h2>Income</h2>
 
     <!-- Monthly Income -->
-    <h3>Monthly Income</h3>
+    <h4>Monthly Income:</h4>
     <div class="form-group">
-        <label asp-for="EmploymentIncome" class="form-label"></label>
+        <label asp-for="EmploymentIncome" class="form-label">Employment income</label>
         <input asp-for="EmploymentIncome" class="form-control" />
-        <span asp-validation-for="MonthlyEmploymentIncome" class="text-danger"></span>
+        <span asp-validation-for="EmploymentIncome" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="MonthlyOtherIncome" class="form-label"></label>
+        <label asp-for="MonthlyOtherIncome" class="form-label">Other monthly income</label>
         <input asp-for="MonthlyOtherIncome" class="form-control" />
         <span asp-validation-for="MonthlyOtherIncome" class="text-danger"></span>
     </div>
 
     <!-- Seasonal Income -->
-    <h3>Seasonal Income</h3>
+    <h4>Seasonal Income:</h4>
     <div class="form-group">
-        <label asp-for="GovernmentSupport" class="form-label"></label>
+        <label asp-for="GovernmentSupport" class="form-label">Financial support from the government (ex. OSAP)</label>
         <input asp-for="GovernmentSupport" class="form-control" />
         <span asp-validation-for="GovernmentSupport" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Awards" class="form-label"></label>
+        <label asp-for="Awards" class="form-label">Scholarships, Awards, Bursaries, etc.</label>
         <input asp-for="Awards" class="form-control" />
         <span asp-validation-for="Awards" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="FamilySupport" class="form-label"></label>
+        <label asp-for="FamilySupport" class="form-label">Financial support from family</label>
         <input asp-for="FamilySupport" class="form-control" />
         <span asp-validation-for="FamilySupport" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="SeasonalOtherIncome" class="form-label"></label>
+        <label asp-for="SeasonalOtherIncome" class="form-label">Other seasonal income</label>
         <input asp-for="SeasonalOtherIncome" class="form-control" />
         <span asp-validation-for="SeasonalOtherIncome" class="text-danger"></span>
     </div>
@@ -57,57 +57,57 @@
     <h2>Expenses</h2>
 
     <!-- Monthly Expenses -->
-    <h3>Monthly Expenses</h3>
+    <h4>Monthly Expenses:</h4>
     <div class="form-group">
-        <label asp-for="Rent" class="form-label"></label>
+        <label asp-for="Rent" class="form-label">Rent/Housing</label>
         <input asp-for="Rent" class="form-control" />
         <span asp-validation-for="Rent" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Food" class="form-label"></label>
+        <label asp-for="Food" class="form-label">Food/Groceries</label>
         <input asp-for="Food" class="form-control" />
         <span asp-validation-for="Food" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Utilities" class="form-label"></label>
+        <label asp-for="Utilities" class="form-label">Utilities (water, electricity, gas, internet, phone bills, etc.)</label>
         <input asp-for="Utilities" class="form-control" />
         <span asp-validation-for="Utilities" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Transportation" class="form-label"></label>
+        <label asp-for="Transportation" class="form-label">Transportation (gas expenses, public transit, etc.)</label>
         <input asp-for="Transportation" class="form-control" />
         <span asp-validation-for="Transportation" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Entertainment" class="form-label"></label>
+        <label asp-for="Entertainment" class="form-label">Entertainment (personal hobbies, entertainment services, etc.)</label>
         <input asp-for="Entertainment" class="form-control" />
         <span asp-validation-for="Entertainment" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="MonthlyOtherExpense" class="form-label"></label>
+        <label asp-for="MonthlyOtherExpense" class="form-label">Other monthly expenses</label>
         <input asp-for="MonthlyOtherExpense" class="form-control" />
         <span asp-validation-for="MonthlyOtherExpense" class="text-danger"></span>
     </div>
 
     <!-- Seasonal Expenses -->
-    <h3>Seasonal Expenses</h3>
+    <h4>Seasonal Expenses:</h4>
     <div class="form-group">
-        <label asp-for="Tuition" class="form-label"></label>
+        <label asp-for="Tuition" class="form-label">Tuition fees</label>
         <input asp-for="Tuition" class="form-control" />
         <span asp-validation-for="Tuition" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="BooksSupplies" class="form-label"></label>
-        <input asp-for="BooksSupplies" class="form-control" />
-        <span asp-validation-for="BooksSupplies" class="text-danger"></span>
+        <label asp-for="AcademicMaterials" class="form-label">Academic materials (books, supplies, etc.)</label>
+        <input asp-for="AcademicMaterials" class="form-control" />
+        <span asp-validation-for="AcademicMaterials" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Travel" class="form-label"></label>
+        <label asp-for="Travel" class="form-label">Travel expenses (vacations, trips back home, etc.)</label>
         <input asp-for="Travel" class="form-control" />
         <span asp-validation-for="Travel" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="SeasonalOtherExpense" class="form-label"></label>
+        <label asp-for="SeasonalOtherExpense" class="form-label">Other seasonal expenses</label>
         <input asp-for="SeasonalOtherExpense" class="form-control" />
         <span asp-validation-for="SeasonalOtherExpense" class="text-danger"></span>
     </div>

@@ -3,7 +3,7 @@
     public class Budget
     {
         // Budget Name
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         // Income Data
         public Dictionary<string, decimal> MonthlyIncome { get; set; }

@@ -7,9 +7,9 @@ namespace SmartBudget.Controllers
     {
         public IActionResult Index(string username)
         {
-            var budget = Budget.GetBudget(username);
-            ViewBag.Budget = budget;
-            ViewBag.Username = username;
+            //var budget = Budget.GetBudget(username);
+            //ViewBag.Budget = budget;
+            //ViewBag.Username = username;
             return View();
         }
     }
