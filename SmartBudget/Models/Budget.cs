@@ -3,7 +3,7 @@
     public class Budget
     {
         // Budget Name
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         // Income Data
         public Dictionary<string, decimal> MonthlyIncome { get; set; }
@@ -18,8 +18,41 @@
         // Savings Data
         public decimal MonthlySavings { get; private set; }
 
-        public Budget()
+        public Budget(CreateBudgetViewModel model)
         {
+            // Initialize budget name
+            Name = model.Name;
+
+            // Initialize dictionaries
+            MonthlyIncome = new Dictionary<string, decimal>
+            {
+                { "Employment", model.EmploymentIncome },
+                { "Other", model.MonthlyOtherIncome }
+            };
+            SeasonalIncome = new Dictionary<string, decimal>
+            {
+                { "Government", model.GovernmentSupport },
+                { "Awards", model.Awards },
+                { "Family", model.FamilySupport },
+                { "Other", model.SeasonalOtherIncome }
+            };
+            MonthlyExpenses = new Dictionary<string, decimal>
+            {
+                { "Rent", model.Rent },
+                { "Food", model.Food },
+                { "Utilities", model.Utilities },
+                { "Transportation", model.Transportation },
+                { "Entertainment", model.Entertainment },
+                { "Other", model.MonthlyOtherExpense }
+            };
+            SeasonalExpenses = new Dictionary<string, decimal>
+            {
+                { "Tuition", model.Tuition },
+                { "Academic Materials", model.AcademicMaterials },
+                { "Travel", model.Travel },
+                { "Other", model.SeasonalOtherExpense }
+            };
+
             // Calculate and initialize the total monthly income and expenses
             GetTotalMonthlyIncome();
             GetTotalMonthlyExpense();
@@ -29,8 +62,10 @@
         }
 
         // Method for calculating the total monthly income
-        public void GetTotalMonthlyIncome()
+        private void GetTotalMonthlyIncome()
         {
+            TotalMonthlyIncome = 0;
+
             foreach (var income in MonthlyIncome.Values)
             {
                 TotalMonthlyIncome += income;
@@ -38,8 +73,10 @@
         }
 
         // Method for calculating the total monthly expenses
-        public void GetTotalMonthlyExpense()
+        private void GetTotalMonthlyExpense()
         {
+            TotalMonthlyExpense = 0;
+
             foreach (var expense in MonthlyExpenses.Values)
             {
                 TotalMonthlyExpense += expense;

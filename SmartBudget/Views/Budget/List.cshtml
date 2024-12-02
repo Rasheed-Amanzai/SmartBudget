@@ -1,7 +1,37 @@
-﻿@{
+﻿@model IEnumerable<SmartBudget.Models.Budget>
+
+@{
     ViewData["Title"] = "View Budgets";
 }
 
 <h1>Budget List</h1>
 
 <p>This is where users can view their budgets.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Budget Name</th>
+            <th>Total Monthly Income</th>
+            <th>Total Monthly Expenses</th>
+            <th>Monthly Savings</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var budget in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => budget.Name)</td>
+                <td>@budget.TotalMonthlyIncome</td>
+                <td>@budget.TotalMonthlyExpense</td>
+                <td>@(budget.MonthlySavings)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@budget.Name">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@budget.Name">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@budget.Name">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
