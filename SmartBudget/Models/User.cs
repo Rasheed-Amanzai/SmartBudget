@@ -6,6 +6,7 @@
 
         public string Username { get; set; }
         public string Password { get; set; }
+        public List<Budget> Budgets { get; set; } = new List<Budget>();
 
         public static bool ValidateLogin(string username, string password)
         {

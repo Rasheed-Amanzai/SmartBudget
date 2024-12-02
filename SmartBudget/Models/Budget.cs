@@ -18,12 +18,6 @@
 
         public Budget()
         {
-            // Initialize dictionaries
-            MonthlyIncome = new Dictionary<string, decimal>();
-            SeasonalIncome = new Dictionary<string, decimal>();
-            MonthlyExpenses = new Dictionary<string, decimal>();
-            SeasonalExpenses = new Dictionary<string, decimal>();
-
             // Calculate and initialize monthly savings
             CalculateMonthlySavings();
         }
