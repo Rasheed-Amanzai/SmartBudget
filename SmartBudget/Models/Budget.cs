@@ -8,37 +8,42 @@
         // Income Data
         public Dictionary<string, decimal> MonthlyIncome { get; set; }
         public Dictionary<string, decimal> SeasonalIncome { get; set; }
+        public decimal TotalMonthlyIncome { get; private set; }
 
         // Expenses Data
         public Dictionary<string, decimal> MonthlyExpenses { get; set; }
         public Dictionary<string, decimal> SeasonalExpenses { get; set; }
+        public decimal TotalMonthlyExpense { get; private set; }
 
         // Savings Data
         public decimal MonthlySavings { get; private set; }
 
         public Budget()
         {
-            // Calculate and initialize monthly savings
-            CalculateMonthlySavings();
+            // Calculate and initialize the total monthly income and expenses
+            GetTotalMonthlyIncome();
+            GetTotalMonthlyExpense();
+
+            // Calculate the monthly savings
+            MonthlySavings = TotalMonthlyIncome - TotalMonthlyExpense;
         }
 
-        // Method for calculating the monthly savings, given the monthly income and expenses
-        public void CalculateMonthlySavings()
+        // Method for calculating the total monthly income
+        public void GetTotalMonthlyIncome()
         {
-            decimal totalIncome = 0;
-            decimal totalExpenses = 0;
-
             foreach (var income in MonthlyIncome.Values)
             {
-                totalIncome += income;
+                TotalMonthlyIncome += income;
             }
+        }
 
+        // Method for calculating the total monthly expenses
+        public void GetTotalMonthlyExpense()
+        {
             foreach (var expense in MonthlyExpenses.Values)
             {
-                totalExpenses += expense;
+                TotalMonthlyExpense += expense;
             }
-
-            MonthlySavings = totalIncome - totalExpenses;
         }
     }
 }
