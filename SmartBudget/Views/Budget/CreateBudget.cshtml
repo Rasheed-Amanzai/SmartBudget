@@ -1,7 +1,120 @@
-﻿@{
-    ViewData["Title"] = "Create a Budget";
+﻿@model SmartBudget.Models.Budget
+
+@{
+    ViewData["Title"] = "Create New Budget";
 }
 
-<h1>Create a Budget</h1>
+<h1>Create New Budget</h1>
 
-<p>This is where users can create a new budget.</p>
+<<form asp-action="CreateBudget" method="post">
+    <!-- Budget Name -->
+    <div class="form-group">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <!-- Income -->
+    <h2>Income</h2>
+
+    <!-- Monthly Income -->
+    <h3>Monthly Income</h3>
+    <div class="form-group">
+        <label asp-for="EmploymentIncome" class="form-label"></label>
+        <input asp-for="EmploymentIncome" class="form-control" />
+        <span asp-validation-for="MonthlyEmploymentIncome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MonthlyOtherIncome" class="form-label"></label>
+        <input asp-for="MonthlyOtherIncome" class="form-control" />
+        <span asp-validation-for="MonthlyOtherIncome" class="text-danger"></span>
+    </div>
+
+    <!-- Seasonal Income -->
+    <h3>Seasonal Income</h3>
+    <div class="form-group">
+        <label asp-for="GovernmentSupport" class="form-label"></label>
+        <input asp-for="GovernmentSupport" class="form-control" />
+        <span asp-validation-for="GovernmentSupport" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Awards" class="form-label"></label>
+        <input asp-for="Awards" class="form-control" />
+        <span asp-validation-for="Awards" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FamilySupport" class="form-label"></label>
+        <input asp-for="FamilySupport" class="form-control" />
+        <span asp-validation-for="FamilySupport" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SeasonalOtherIncome" class="form-label"></label>
+        <input asp-for="SeasonalOtherIncome" class="form-control" />
+        <span asp-validation-for="SeasonalOtherIncome" class="text-danger"></span>
+    </div>
+
+    <!-- Expenses -->
+    <h2>Expenses</h2>
+
+    <!-- Monthly Expenses -->
+    <h3>Monthly Expenses</h3>
+    <div class="form-group">
+        <label asp-for="Rent" class="form-label"></label>
+        <input asp-for="Rent" class="form-control" />
+        <span asp-validation-for="Rent" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Food" class="form-label"></label>
+        <input asp-for="Food" class="form-control" />
+        <span asp-validation-for="Food" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Utilities" class="form-label"></label>
+        <input asp-for="Utilities" class="form-control" />
+        <span asp-validation-for="Utilities" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Transportation" class="form-label"></label>
+        <input asp-for="Transportation" class="form-control" />
+        <span asp-validation-for="Transportation" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Entertainment" class="form-label"></label>
+        <input asp-for="Entertainment" class="form-control" />
+        <span asp-validation-for="Entertainment" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MonthlyOtherExpense" class="form-label"></label>
+        <input asp-for="MonthlyOtherExpense" class="form-control" />
+        <span asp-validation-for="MonthlyOtherExpense" class="text-danger"></span>
+    </div>
+
+    <!-- Seasonal Expenses -->
+    <h3>Seasonal Expenses</h3>
+    <div class="form-group">
+        <label asp-for="Tuition" class="form-label"></label>
+        <input asp-for="Tuition" class="form-control" />
+        <span asp-validation-for="Tuition" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BooksSupplies" class="form-label"></label>
+        <input asp-for="BooksSupplies" class="form-control" />
+        <span asp-validation-for="BooksSupplies" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Travel" class="form-label"></label>
+        <input asp-for="Travel" class="form-control" />
+        <span asp-validation-for="Travel" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SeasonalOtherExpense" class="form-label"></label>
+        <input asp-for="SeasonalOtherExpense" class="form-control" />
+        <span asp-validation-for="SeasonalOtherExpense" class="text-danger"></span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="form-group">
+        <button type="button" class="btn btn-secondary" onclick="window.location.href='/Budget/Index'">Back/Cancel</button>
+        <button type="submit" class="btn btn-primary">Create New Budget</button>
+    </div>
+</form>

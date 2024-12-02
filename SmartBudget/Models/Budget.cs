@@ -2,21 +2,49 @@
 {
     public class Budget
     {
-        public string Username { get; set; }
-        public decimal Income { get; set; }
-        public decimal Expenses { get; set; }
-        public decimal Savings => Income - Expenses;
+        // Budget Name
+        public string Name { get; set; }
 
-        public static List<Budget> Budgets = new List<Budget>();
+        // Income Data
+        public Dictionary<string, decimal> MonthlyIncome { get; set; }
+        public Dictionary<string, decimal> SeasonalIncome { get; set; }
 
-        public static void CreateBudget(string username, decimal income, decimal expenses)
+        // Expenses Data
+        public Dictionary<string, decimal> MonthlyExpenses { get; set; }
+        public Dictionary<string, decimal> SeasonalExpenses { get; set; }
+
+        // Savings Data
+        public decimal MonthlySavings { get; private set; }
+
+        public Budget()
         {
-            Budgets.Add(new Budget { Username = username, Income = income, Expenses = expenses });
+            // Initialize dictionaries
+            MonthlyIncome = new Dictionary<string, decimal>();
+            SeasonalIncome = new Dictionary<string, decimal>();
+            MonthlyExpenses = new Dictionary<string, decimal>();
+            SeasonalExpenses = new Dictionary<string, decimal>();
+
+            // Calculate and initialize monthly savings
+            CalculateMonthlySavings();
         }
 
-        public static Budget GetBudget(string username)
+        // Method for calculating the monthly savings, given the monthly income and expenses
+        public void CalculateMonthlySavings()
         {
-            return Budgets.FirstOrDefault(b => b.Username == username);
+            decimal totalIncome = 0;
+            decimal totalExpenses = 0;
+
+            foreach (var income in MonthlyIncome.Values)
+            {
+                totalIncome += income;
+            }
+
+            foreach (var expense in MonthlyExpenses.Values)
+            {
+                totalExpenses += expense;
+            }
+
+            MonthlySavings = totalIncome - totalExpenses;
         }
     }
 }
