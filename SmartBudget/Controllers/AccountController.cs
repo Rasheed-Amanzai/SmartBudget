@@ -138,7 +138,7 @@ namespace SmartBudget.Controllers
                             await _emailService.SendMfaTokenAsync(user.Email, token);
                             var tempRole = await _userManager.IsInRoleAsync(user, "Admin");
                             // Store the user's ID and redirect to the MFA confirmation page
-                            return RedirectToAction("VerifyMfa", new { userId = user.Id, tempRole });
+                            return RedirectToAction("VerifyMfa", new { userId = user.Id, returnUrl });
                         }
 
                         // Redirect to appropriate dashboard if MFA is not enabled
@@ -195,7 +195,7 @@ namespace SmartBudget.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Dashboard", model.ReturnUrl);
+                        return await RedirectToLocalAsync(model.ReturnUrl);
                     }
                     else
                     {
@@ -210,22 +210,22 @@ namespace SmartBudget.Controllers
             return View(model);
         }
 
-        private async Task<IActionResult> RedirectToLocalAsync(string returnUrl)
+        private  async Task<IActionResult> RedirectToLocalAsync(string returnUrl)
         {
             // Get the currently signed-in user
-            var user = await _userManager.GetUserAsync(User);
+            var user =  await _userManager.GetUserAsync(User);
 
             if (user != null)
             {
                 // Check if the user is an Admin or Student
-                var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+                var isAdmin =  await _userManager.IsInRoleAsync(user, "Admin");
 
                 // Redirect to the appropriate dashboard
                 return RedirectToAction("Dashboard", isAdmin ? "Admin" : "Student");
             }
-
+            return RedirectToAction("Account","Login");
             // If no user is found, redirect to the home page or show an error
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            //return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
 
