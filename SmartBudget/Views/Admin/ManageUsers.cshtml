@@ -1,0 +1,61 @@
+﻿@model List<SmartBudget.ViewModels.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <p class="text-muted text-center">Assign roles and manage user access with ease.</p>
+
+    <table class="table table-hover table-striped table-bordered mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th>User Name</th>
+                <th>Roles</th>
+                <th>Assign Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td colspan="3" class="text-center text-muted">No users found.</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var userRole in Model)
+                {
+                    <tr>
+                        <td>@userRole.UserName</td>
+                        <td>@userRole.Roles</td>
+                        <td>
+                            <form method="post" asp-action="AssignRole" asp-route-userId="@userRole.UserId">
+                                <div class="d-flex">
+                                    <select name="role" class="form-select me-2">
+                                        @if (userRole.Roles == "Admin")
+                                        {
+
+                                            <option value="Admin" selected>Admin</option>
+                                            <option value="Student">Student</option>
+                                        }
+                                        else
+                                        {
+
+                                            <option value="Admin">Admin</option>
+                                            <option value="Student" selected>Student</option>
+                                        }
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Assign Role</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+                           

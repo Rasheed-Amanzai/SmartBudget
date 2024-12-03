@@ -1,15 +1,8 @@
-﻿<h1>Welcome, @ViewBag.Username</h1>
-@if (ViewBag.Budget != null)
-{
-    <p>Income: @ViewBag.Budget.Income</p>
-    <p>Expenses: @ViewBag.Budget.Expenses</p>
-    <p>Savings: @ViewBag.Budget.Savings</p>
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
-else
-{
-    <p>No budget created yet.</p>
-    <a asp-action="Create" asp-controller="Budget">Create Budget</a>
-}
-<form asp-controller="Predictive Analysis" asp-action="Budget" method="get">
-    <button type="submit">Future Expenses</button>
-</form>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
