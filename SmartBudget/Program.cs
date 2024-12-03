@@ -3,10 +3,16 @@ using SmartBudget.Data;
 using Microsoft.AspNetCore.Identity;
 using SmartBudget.Utils;
 using SmartBudget.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Bind SMTP settings from appsettings.json
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SMTP"));
+
+// Add EmailService for dependency injection
+builder.Services.AddTransient<EmailService, EmailService>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
